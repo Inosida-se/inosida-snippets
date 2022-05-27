@@ -23,7 +23,9 @@ const fadeOut = (element) => {
             const newOpacity = currentOpacity - 0.05;
             element.style.opacity = newOpacity.toString();
             if (newOpacity <= 0) {
-                element.style.display = 'none';
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 200);
                 resolve();
             }
             else    
