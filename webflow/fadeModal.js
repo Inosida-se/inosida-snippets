@@ -20,7 +20,7 @@ const fadeOut = (element) => {
         element.style.opacity = '1';
         (function fade() {
             const currentOpacity = parseFloat(element.style.opacity);
-            const newOpacity = currentOpacity - 0.1;
+            const newOpacity = currentOpacity - 0.05;
             element.style.opacity = newOpacity.toString();
             if (newOpacity <= 0) {
                 element.style.display = 'none';
