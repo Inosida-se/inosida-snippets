@@ -12,9 +12,9 @@ Snippets built to enhance sites built with webflow
 <script>
 (() => {
     const query = new URLSearchParams(window.location.search).get('q');
-    const search = new Search('.item-list', '.item');
-    search.addSearchInput('#search');
-    search.addSearchLabel('#searchLabel');
+    const search = new PageSearch('[data-item-list]', '[data-list-item]');
+    search.addSearchInput('[data-search-input]');
+    search.addSearchLabel('[data-search-label]');
 
     if (query) {
         search.search(query);

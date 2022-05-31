@@ -1,4 +1,4 @@
-class Search {
+class PageSearch {
     constructor(itemList, itemSelector) {
         this.itemList = typeof itemList === 'string' ? document.querySelector(itemList) : itemList;
         this.listItems = this.itemList.querySelectorAll(itemSelector);
@@ -41,13 +41,3 @@ class Search {
         });
     }
 }
-
-/* (() => {
-    const query = new URLSearchParams(window.location.search).get('q');
-    const search = new Search('.item-list', '.item');
-    search.addSearchInput('#search');
-
-    if (query) {
-        search.search(query);
-    }
-})(); */
