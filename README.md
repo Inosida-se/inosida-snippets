@@ -7,7 +7,7 @@ Snippets built to enhance sites built with webflow
 ## Page Search
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/inosida-se/inosida-snippets/webflow/pageSearch.min.js" crossorigin="anonymous"></script>
+<script src="https://inosida-snippets.pages.dev/pageSearch.js" crossorigin="anonymous"></script>
 
 <script>
 (() => {
