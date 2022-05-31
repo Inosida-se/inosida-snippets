@@ -18,13 +18,13 @@ class PageSearch {
         }
 
         for (i = 0; i < this.listItems.length; i++) {
-            itemName = listItems[i].querySelector('[data-name="innerText"]');
+            itemName = this.listItems[i].querySelector('[data-name="innerText"]');
             txtValue = itemName.textContent || itemName.innerText;
 
             if (filter === '' || txtValue.toUpperCase().indexOf(filter) > -1) {
-                listItem[i].style.display = "";
+                this.listItems[i].style.display = "";
             } else {
-                listItem[i].style.display = "none";
+                this.listItems[i].style.display = "none";
             }
         }
     }
