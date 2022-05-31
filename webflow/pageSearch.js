@@ -31,7 +31,7 @@ class PageSearch {
     addSearchInput(input) {
         this.input = typeof input === 'string' ? document.querySelector(input) : input;
         this.input.addEventListener('keyup', () => {
-            search(this.input.value);
+            this.search(this.input.value);
         });
     }
     addSearchLabel(label) {
