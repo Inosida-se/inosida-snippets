@@ -101,7 +101,7 @@ class Search {
             this.searchEmptyBlock.style.display = 'none';
             this.resultLinkBlock.style.display = '';
             this.resultCount.innerText = numberOfResults;
-            this.resultLinkBlock.setAttribute('href', '/sok?q=' + searchValue);
+            this.resultLinkBlock.setAttribute('href', '/pages/sok?q=' + searchValue);
         } else if (numberOfResults === 0) {
             this.resultLinkBlock.style.display = 'none';
             this.searchEmptyBlock.style.display = '';
