@@ -1,5 +1,6 @@
 (() => {
 const modals = document.querySelectorAll('[data-modal]');
+createStyle(`[data-modal-content]`, 'flex');
 modals.forEach(modal => {
     // Get modal opener 
     const openModal = modal.querySelector('[data-modal-open]') || modal;
@@ -9,12 +10,6 @@ modals.forEach(modal => {
 
     // Get modal content
     const modalContent = modal.querySelector('[data-modal-content]');
-
-    // Get modal display type
-    const displayType = modal.getAttribute('data-display');
-
-    // Create style
-    createStyle(`[data-modal-content]`, displayType);
     
     openModal.addEventListener("click", () => {
         modalContent.setAttribute("open", "")
@@ -37,29 +32,6 @@ modals.forEach(modal => {
     });
 });
 })();
-
-
-const modal = document.querySelector("#modal");
-const openModal = document.querySelector(".open-button");
-const closeModal = document.querySelector(".close-button");
-
-openModal.addEventListener("click", () => {
-  modal.setAttribute("open", "")
-});
-
-closeModal.addEventListener("click", () => {
-  modal.setAttribute("closing", "");
-
-  modal.addEventListener(
-    "animationend",
-    () => {
-      modal.removeAttribute("closing");
-      modal.removeAttribute("open");
-    },
-    { once: true }
-  );
-});
-
 
 
 function createStyle(selector, displayType) {
