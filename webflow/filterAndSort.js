@@ -47,9 +47,9 @@ class FilterAndSort {
                 aValue = Number(aValue.replace(/\D/g,''));
                 bValue = Number(bValue.replace(/\D/g,''));
             }
-            if (Number(aValue) && Number(bValue)) {
+            if (!!(Number(aValue) && Number(bValue))) {
                 return sortOrder === 'asc' ? Number(aValue) - Number(bValue) : Number(bValue) - Number(aValue);
-            } else if ( new Date(aValue) && new Date(bValue)) {
+            } else if ( new Date(aValue) != "Invalid Date" && new Date(bValue) != "Invalid Date") {
                 return sortOrder === 'asc' ? new Date(aValue) - new Date(bValue) : new Date(bValue) - new Date(aValue);
             } else {
                 return sortOrder === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
