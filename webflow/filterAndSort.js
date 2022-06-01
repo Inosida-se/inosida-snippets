@@ -118,24 +118,3 @@ class FilterAndSort {
         });
     }
 }
-
-
-(async () => {
-    const dynamicContent = document.querySelector('[data-dynamic-content]');
-    const listFilter = document.querySelector('[data-filter-select]');
-    const listSort = document.querySelector('[data-sort-list]');
-
-    if (dynamicContent) {
-        const listItemSelector = dynamicContent.getAttribute('data-list-item-selector');
-        window.filterAndSort = new FilterAndSort(dynamicContent, listItemSelector);
-    }
-
-    if (listFilter && dynamicContent) {
-        window.filterAndSort.addFilterInputs(listFilter, '[data-filter-input]', '[data-filter-list]', '[data-filter-label]');
-    }
-
-    if (listSort && dynamicContent) {
-        window.filterAndSort.addSortInputs(listSort);
-    }
-
-})();

@@ -130,18 +130,3 @@ class Modal {
         }
     }
 }
-
-
-/* (async () => {
-    const modal = new Modal('.global-search-wrapper', '.nav-search-button', async () => {
-        console.log('Modal opened');
-        if (!('searchArray' in window)) {
-            const itemGetter = new ItemGetter('/sok', '[data-dynamic-content]', '[data-list-item]', ['name', 'price', 'image', 'url']);
-            window.searchArray = await itemGetter.getItems();
-            const search = new Search( window.searchArray, '.global-search-list', '.global-search-item', '.global-search-all-link-count', '.global-search-all-link', '.global-search-empty', 3);
-            document.querySelector('.nav-search-input').addEventListener('keyup', (e) => {
-                search.search(e.target.value);
-            });
-        }
-    });
-})();  */
