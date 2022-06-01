@@ -69,4 +69,9 @@ Snippets built to enhance sites built with webflow
 })();
 </script>
 ```
+## CMS Slider
+
+```html
+<script src="https://inosida-snippets.pages.dev/cmsSlider.js" crossorigin="anonymous"></script>
+```
 
