@@ -74,4 +74,9 @@ Snippets built to enhance sites built with webflow
 ```html
 <script src="https://inosida-snippets.pages.dev/cmsSlider.js" crossorigin="anonymous"></script>
 ```
+## Fade Modal
+
+```html
+<script src="https://inosida-snippets.pages.dev/fadeModal.js" crossorigin="anonymous"></script>
+```
 

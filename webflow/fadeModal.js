@@ -1,47 +1,11 @@
-const fadeIn = (element, display = 'flex') => {
-    return new Promise((resolve) => {
-        element.style.opacity = '0';
-        element.style.display = display;
-        (function fade() {
-            const currentOpacity = parseFloat(element.style.opacity);
-            if (currentOpacity >= 1) {
-                resolve();
-                return;
-            }
-            const newOpacity = currentOpacity + 0.2;
-            element.style.opacity = newOpacity.toString();
-            requestAnimationFrame(fade);
-        })();
-    });
-};
-
-const fadeOut = (element) => {
-    return new Promise((resolve) => {
-        element.style.opacity = '1';
-        (function fade() {
-            const currentOpacity = parseFloat(element.style.opacity);
-            const newOpacity = currentOpacity - 0.1;
-            element.style.opacity = newOpacity.toString();
-            if (newOpacity <= 0) {
-                setTimeout(() => {
-                    element.style.display = 'none';
-                }, 200);
-                resolve();
-            }
-            else    
-                requestAnimationFrame(fade);
-        })();
-    });
-};
-
 (() => {
 const modals = document.querySelectorAll('[data-modal]');
 modals.forEach(modal => {
     // Get modal opener 
-    const modalOpen = modal.querySelector('[data-modal-open]') || modal;
+    const openModal = modal.querySelector('[data-modal-open]') || modal;
 
     // Get modal closer
-    const modalClose = modal.querySelectorAll('[data-modal-close]');
+    const closeModals = modal.querySelectorAll('[data-modal-close]');
 
     // Get modal content
     const modalContent = modal.querySelector('[data-modal-content]');
@@ -49,28 +13,87 @@ modals.forEach(modal => {
     // Get modal display type
     const displayType = modal.getAttribute('data-display');
 
-    let open = false;
+    // Create style
+    createStyle(`[data-modal-content]`, displayType);
     
-    // On modal open
-    modalOpen.addEventListener('click', (e) => {
-        if (open)
-            return;
-        fadeIn(modalContent, displayType).then(() => {
-            modal.setAttribute('aria-hidden', 'false');
-            open = true;
-        });
+    openModal.addEventListener("click", () => {
+        modalContent.setAttribute("open", "")
     });
-
+      
     // On modal close
-    modalClose.forEach(close => {
-        close.addEventListener('click', () => {
-            if (!open) 
-                return;
-            fadeOut(modalContent).then(() => {
-                modal.setAttribute('aria-hidden', 'true');
-                open = false;
-            });
+    closeModals.forEach(closeModal => {
+        closeModal.addEventListener("click", () => {
+            modalContent.setAttribute("closing", "");
+            
+            modalContent.addEventListener(
+                "animationend",
+                () => {
+                modalContent.removeAttribute("closing");
+                modalContent.removeAttribute("open");
+                },
+                { once: true }
+            );
         });
     });
 });
 })();
+
+
+const modal = document.querySelector("#modal");
+const openModal = document.querySelector(".open-button");
+const closeModal = document.querySelector(".close-button");
+
+openModal.addEventListener("click", () => {
+  modal.setAttribute("open", "")
+});
+
+closeModal.addEventListener("click", () => {
+  modal.setAttribute("closing", "");
+
+  modal.addEventListener(
+    "animationend",
+    () => {
+      modal.removeAttribute("closing");
+      modal.removeAttribute("open");
+    },
+    { once: true }
+  );
+});
+
+
+
+function createStyle(selector, displayType) {
+    const style = document.createElement('style');
+    style.innerHTML = `
+    ${selector}[open] {
+        animation: fade-in 500ms forwards;
+        display: ${displayType};
+    }
+    
+    ${selector}[closing] {
+        display: ${displayType};
+        pointer-events: none;
+        inset: 0;
+        animation: fade-out 500ms forwards;
+    }
+    
+    @keyframes fade-in {
+        0% {
+        opacity: 0;
+        }
+        100% {
+        opacity: 1;
+        }
+    }
+    
+    @keyframes fade-out {
+        0% {
+        opacity: 1;
+        }
+        100% {
+        opacity: 0;
+        }
+    }
+    `;
+    document.head.appendChild(style);
+}
