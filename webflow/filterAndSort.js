@@ -71,7 +71,7 @@ class FilterAndSort {
             itemFilters.forEach(filter => {
                 let filterValue = filter.getAttribute('data-filter').split(',');
                 filterValue.forEach(value => {
-                    if (!filters.includes(value)) {
+                    if (!filters.includes(value && value !== "")) {
                         filters.push(value);
                     }
                 });
