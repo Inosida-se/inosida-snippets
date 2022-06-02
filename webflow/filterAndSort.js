@@ -106,7 +106,7 @@ class FilterAndSort {
     }
     addSortInputs(sortInput) {
         sortInput = typeof sortInput === 'string' ? document.querySelector(sortInput) : sortInput;
-        let sortInputChildren = sortInput.childNodes;
+        let sortInputChildren = sortInput.querySelectorAll('a');
         sortInputChildren.forEach(child => {
             child.addEventListener('click', () => {
                 sortInputChildren.forEach(child => {
