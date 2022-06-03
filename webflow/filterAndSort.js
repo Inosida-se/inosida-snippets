@@ -86,7 +86,7 @@ class FilterAndSort {
             const filterElement = filterInput.querySelector(filterInputTemplate).cloneNode(true);
             filterElement.querySelector('.w-form-label').innerText = filter;
             filterElement.setAttribute('data-value', filter);
-            this.filterInputChecks[filter] = filterElement.querySelector('input[type="checkbox"]');
+            this.filterInputChecks[filter] = filterElement;
             filterInputs.push(filterElement);
         });
         filterInputList.innerHTML = "";
