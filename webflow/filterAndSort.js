@@ -16,8 +16,6 @@ class FilterAndSort {
             this.currentFilter = [];
         }
 
-        this.filterInputChecks[filterValue].click();
-
         const filteredItems = [];
         this.itemList.querySelectorAll(this.itemSelector).forEach(item => {
             item.style.display = 'none';
