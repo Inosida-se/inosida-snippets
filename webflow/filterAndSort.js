@@ -16,7 +16,7 @@ class FilterAndSort {
             this.currentFilter = [];
         }
 
-        this.filterInputChecks[filterValue].checked = true;
+        this.filterInputChecks[filterValue].click();
 
         const filteredItems = [];
         this.itemList.querySelectorAll(this.itemSelector).forEach(item => {
@@ -86,7 +86,7 @@ class FilterAndSort {
             const filterElement = filterInput.querySelector(filterInputTemplate).cloneNode(true);
             filterElement.querySelector('.w-form-label').innerText = filter;
             filterElement.setAttribute('data-value', filter);
-            this.filterInputChecks[filter.toLowerCase()] = filterElement.querySelector('input[type="checkbox"]');
+            this.filterInputChecks[filter] = filterElement.querySelector('input[type="checkbox"]');
             filterInputs.push(filterElement);
         });
         filterInputList.innerHTML = "";
