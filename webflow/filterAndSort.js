@@ -10,14 +10,13 @@ class FilterAndSort {
         // else remove the filter from the current filter array
         if (on === true) {
             this.currentFilter.push(filterValue);
-            this.filterInputChecks[filterValue].checked = true;
         } else if (on === false) {
             this.currentFilter.splice(this.currentFilter.indexOf(filterValue), 1);
-            this.filterInputChecks[filterValue].checked = false;
         } else {
             this.currentFilter = [];
-            this.filterInputChecks[filterValue].checked = false;
         }
+
+        this.filterInputChecks[filterValue].checked = true;
 
         const filteredItems = [];
         this.itemList.querySelectorAll(this.itemSelector).forEach(item => {
@@ -87,7 +86,7 @@ class FilterAndSort {
             const filterElement = filterInput.querySelector(filterInputTemplate).cloneNode(true);
             filterElement.querySelector('.w-form-label').innerText = filter;
             filterElement.setAttribute('data-value', filter);
-            this.filterInputChecks[filter] = filterElement.querySelector('input[type="checkbox"]');
+            this.filterInputChecks[filter.toLowerCase()] = filterElement.querySelector('input[type="checkbox"]');
             filterInputs.push(filterElement);
         });
         filterInputList.innerHTML = "";
